@@ -1,0 +1,32 @@
+<div class="card">
+
+  <h2 class="heading">Appointment List</h2>
+
+  <div class="inputcard">
+    <h3 class="descriptiontext">Description</h3>
+    <input
+      class="input-title"
+      [(ngModel)]="newAppointmentTitle"
+      placeholder="Appointment description"/>
+      <h3 class="datetext">Date</h3>
+    <input
+      class="inputdate" 
+      [(ngModel)]="newAppointmentDate"
+      type="date"
+      [value]="defaultDate"/>
+    <button
+      class="addbutton"
+      (click)="addAppointment()"
+      [disabled]="!newAppointmentTitle">ADD</button>
+  </div>
+</div>
+
+<ul class="list">
+  <li class="outputtitle" *ngFor="let appointment of appointments; index as i">
+    {{ appointment.title }}
+    <div class="outputdate" value="dd-mm-yyyy">
+        {{ appointment.date | date : "dd.MM.yyyy" }}
+        <button class="deletebutton" (click)="deleteAppointment(i)">Delete</button>
+    </div>
+  </li>
+</ul>
